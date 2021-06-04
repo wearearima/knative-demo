@@ -20,6 +20,9 @@ public class KnativeEventingApplication {
 
 	@Bean
 	Consumer<String> eventConsumer(@Value("${app.delay}") int delay) {
+
+		LOGGER.info("Configured delay: {}", delay);
+
 		return (data) -> { this.process(data, delay); };
 	}
 

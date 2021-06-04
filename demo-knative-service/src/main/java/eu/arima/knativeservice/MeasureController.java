@@ -25,6 +25,9 @@ public class MeasureController {
 
     public MeasureController(@Value("${app.delay}") long delay, @Value("${app.topic}") String topic,
                              KafkaTemplate<String, Measure> kafkaTemplate) {
+
+        LOGGER.info("Configured delay: {}", delay);
+
         this.delay = delay;
         this.kafkaTemplate = kafkaTemplate;
         this.topic = topic;
