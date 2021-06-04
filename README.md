@@ -119,3 +119,30 @@ kubectl apply -f measures-kafka-source.yaml
 ## Load Tests execution
 
 Pending...
+
+## Configure delays and concurrency
+
+You can try different different delays and concurrencies to see how Knative Eventing behaves.
+
+```shell
+kn service update demo-knative-eventing --concurrency-target 3
+kn service update demo-knative-eventing --env app.delay=5000
+```
+
+In this demo, Knative Eventing's scalability depends on how many partitions are configured in `measures` Kafka topic. By
+default, the amount of partitions is 1. Use this command to change it:
+
+```shell
+kubectl edit -n kafka KafkaTopic/measures
+```
+
+## Kafka Cli Consumer and Producer
+
+```shell
+kubectl -n kafka run kafka-producer -ti --image=strimzi/kafka:0.14.0-kafka-2.3.0 --rm=true --restart=Never -- bin/kafka-console-producer.sh --broker-list my-cluster-kafka-bootstrap:9092 --topic measures
+
+kubectl -n kafka run kafka-consumer -ti --image=quay.io/strimzi/kafka:0.23.0-kafka-2.8.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic measures --from-beginning
+kubectl -n kafka run kafka-consumer-by-partition -ti --image=quay.io/strimzi/kafka:0.23.0-kafka-2.8.0 --rm=true --restart=Never -- bin/kafka-console-consumer.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic measures --from-beginning  --partition 0
+
+kubectl -n kafka run kafka-topics -ti --image=quay.io/strimzi/kafka:0.23.0-kafka-2.8.0 --rm=true --restart=Never -- bin/kafka-topics.sh --bootstrap-server my-cluster-kafka-bootstrap:9092 --topic measures --describe  
+```
