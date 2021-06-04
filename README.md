@@ -1,5 +1,9 @@
 # Knative on EKS
 
+## Introduction
+
+Pending...
+
 ## EKS cluster creation
 
 We will use [eksctl]() to create a kubernetes cluster on [EKS](https://aws.amazon.com/eks/). By default the cluster is
@@ -105,3 +109,7 @@ Deploy with:
 # TODO set latest version
 kn service create demo-knative-eventing --image=itelleria/demo-knative-eventing:0.0.1-SNAPSHOT
 ```
+
+## Load Tests execution
+
+Pending...
