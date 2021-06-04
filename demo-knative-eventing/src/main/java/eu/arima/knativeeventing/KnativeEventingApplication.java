@@ -23,7 +23,7 @@ public class KnativeEventingApplication {
 
 		LOGGER.info("Configured delay: {}", delay);
 
-		return (data) -> { this.process(data, delay); };
+		return (data) -> this.process(data, delay);
 	}
 
 	private void process(String data, int delay) {
@@ -34,7 +34,7 @@ public class KnativeEventingApplication {
 			throw new IllegalStateException("Unexpected error sleeping", e);
 		}
 
-		LOGGER.info("Event processed: {}", data);
+		LOGGER.info("Measure processed: {}", data);
 	}
 
 }
