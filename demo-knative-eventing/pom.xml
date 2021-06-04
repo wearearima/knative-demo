@@ -69,7 +69,7 @@
 				<version>3.0.0</version>
 				<configuration>
 					<to>
-						<image>docker.io/itelleria/knative-eventing:${version}</image>
+						<image>docker.io/itelleria/${artifactId}:${version}</image>
 					</to>
 				</configuration>
 			</plugin>
