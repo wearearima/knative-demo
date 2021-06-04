@@ -82,7 +82,7 @@ Deploy with:
 
 ```shell
 # TODO set latest version
-kn service create kcd-knative-serving --image=itelleria/demo-knative-serving:0.0.1-SNAPSHOT
+kn service create demo-knative-serving --image=itelleria/demo-knative-serving:0.0.1-SNAPSHOT
 ```
 
 ### Knative Eventing demo application 
@@ -97,5 +97,5 @@ Deploy with:
 
 ```shell
 # TODO set latest version
-kn service create kcd-knative-eventing --image=itelleria/demo-knative-eventing:0.0.1-SNAPSHOT
+kn service create demo-knative-eventing --image=itelleria/demo-knative-eventing:0.0.1-SNAPSHOT
 ```
