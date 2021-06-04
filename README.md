@@ -85,6 +85,12 @@ Deploy with:
 kn service create demo-knative-serving --image=itelleria/demo-knative-serving:0.0.1-SNAPSHOT
 ```
 
+Check that the application is running:
+
+```shell
+curl http://demo-knative-serving.default.kcdspain.arima.eu/actuator/health
+```
+
 ### Knative Eventing demo application 
 
 Build container image with:
