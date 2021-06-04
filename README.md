@@ -110,6 +110,12 @@ Deploy with:
 kn service create demo-knative-eventing --image=itelleria/demo-knative-eventing:0.0.1-SNAPSHOT
 ```
 
+Create a Kafka Event Source:
+
+```shell
+kubectl apply -f measures-kafka-source.yaml
+```
+
 ## Load Tests execution
 
 Pending...
