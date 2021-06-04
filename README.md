@@ -1,4 +1,4 @@
-# Knative on EKS
+# Knative Demo on EKS
 
 ## Introduction
 
