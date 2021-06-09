@@ -89,8 +89,7 @@ Build container image with:
 Deploy with:
 
 ```shell
-# TODO set latest version
-kn service create ingester --image=itelleria/ingester:0.0.1-SNAPSHOT
+kn service create ingester --image=itelleria/ingester:v1.0
 ```
 
 Check that the application is running:
@@ -110,8 +109,7 @@ Build container image with:
 Deploy with:
 
 ```shell
-# TODO set latest version
-kn service create processor --image=itelleria/processor:0.0.1-SNAPSHOT
+kn service create processor --image=itelleria/processor:v1.0
 ```
 
 Create a Kafka Event Source:
