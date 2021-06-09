@@ -2,11 +2,15 @@
 
 ## Introduction
 
-Pending...
+This knative demo is composed of two [Spring Boot](https://spring.io/projects/spring-boot) applications: the ingester
+and the processor. The ingester receives measures from several sensors in json format and those are persisted in a Kafka
+topic. Meanwhile, the processor processes the Kafka events in background. 
+
+![Demo Diagram](demo-diagram.png)
 
 ## EKS cluster creation
 
-We will use [eksctl]() to create a kubernetes cluster on [EKS](https://aws.amazon.com/eks/). By default the cluster is
+We will use [eksctl](https://eksctl.io) to create a kubernetes cluster on [EKS](https://aws.amazon.com/eks/). By default the cluster is
 created with two `m5.large` worker nodes. 
 
 ```shell
@@ -118,7 +122,17 @@ kubectl apply -f measures-kafka-source.yaml
 
 ## Load Tests execution
 
-Pending...
+To run the JMeter tests in non gui mode run this command:
+
+```shell
+jmeter -n -t measure-load-test.jmx
+```
+
+Some test parameters can be configured, for example:
+
+````shell
+jmeter -n -t measure-load-test.jmx -Jnumber-of-sensors=10 -Jnumber-of-loops=20
+````
 
 ## Configure delays and concurrency
 
