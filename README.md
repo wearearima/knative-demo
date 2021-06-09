@@ -74,7 +74,7 @@ kubectl wait deployment --all --timeout=-1s --for=condition=Available -n knative
 
 ## Building and Deployment
 
-### Knative Serving demo application 
+### Ingester (Knative Serving demo application) 
 
 Build container image with:
 
@@ -86,7 +86,7 @@ Deploy with:
 
 ```shell
 # TODO set latest version
-kn service create demo-knative-serving --image=itelleria/demo-knative-serving:0.0.1-SNAPSHOT
+kn service create ingester --image=itelleria/ingester:0.0.1-SNAPSHOT
 ```
 
 Check that the application is running:
@@ -95,7 +95,7 @@ Check that the application is running:
 curl http://demo-knative-serving.default.kcdspain.arima.eu/actuator/health
 ```
 
-### Knative Eventing demo application 
+### Processor (Knative Eventing demo application) 
 
 Build container image with:
 
@@ -107,7 +107,7 @@ Deploy with:
 
 ```shell
 # TODO set latest version
-kn service create demo-knative-eventing --image=itelleria/demo-knative-eventing:0.0.1-SNAPSHOT
+kn service create processor --image=itelleria/processor:0.0.1-SNAPSHOT
 ```
 
 Create a Kafka Event Source:
@@ -125,8 +125,8 @@ Pending...
 You can try different different delays and concurrencies to see how Knative Eventing behaves.
 
 ```shell
-kn service update demo-knative-eventing --concurrency-target 3
-kn service update demo-knative-eventing --env app.delay=5000
+kn service update processor --concurrency-target 3
+kn service update processor --env app.delay=5000
 ```
 
 In this demo, Knative Eventing's scalability depends on how many partitions are configured in `measures` Kafka topic. By
