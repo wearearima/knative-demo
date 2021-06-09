@@ -19,14 +19,9 @@ public class MeasureController {
     
     private final String topic;
     
-    private final long delay;
-
-    public MeasureController(@Value("${app.delay}") long delay, @Value("${app.topic}") String topic,
+    public MeasureController(@Value("${app.topic}") String topic,
                              KafkaTemplate<String, Measure> kafkaTemplate) {
 
-        LOGGER.info("Configured delay: {}", delay);
-
-        this.delay = delay;
         this.kafkaTemplate = kafkaTemplate;
         this.topic = topic;
     }
@@ -35,8 +30,6 @@ public class MeasureController {
     void newMeasure(@RequestBody Measure measure) throws InterruptedException {
 
         LOGGER.info("Measure received: {}", measure);
-
-        Thread.sleep(this.delay);
 
         this.kafkaTemplate.send(this.topic, measure);
 
