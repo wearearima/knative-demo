@@ -44,7 +44,8 @@ kubectl apply -f https://github.com/knative/serving/releases/download/$KNATIVE_V
 kubectl apply -f https://github.com/knative/serving/releases/download/$KNATIVE_VERSION/serving-core.yaml
 kubectl wait deployment --all --timeout=-1s --for=condition=Available -n knative-serving
 
-kubectl apply -f https://github.com/knative/net-kourier/releases/download/$KNATIVE_VERSION/kourier.yaml
+export KOURIER_VERSION=v0.23.0
+kubectl apply -f https://github.com/knative/net-kourier/releases/download/$KOURIER_VERSION/kourier.yaml
 kubectl wait deployment --all --timeout=-1s --for=condition=Available -n kourier-system
 
 kubectl patch configmap/config-network \
