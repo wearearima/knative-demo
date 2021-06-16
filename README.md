@@ -46,7 +46,6 @@ kubectl wait deployment --all --timeout=-1s --for=condition=Available -n knative
 
 kubectl apply -f https://github.com/knative/net-kourier/releases/download/$KNATIVE_VERSION/kourier.yaml
 kubectl wait deployment --all --timeout=-1s --for=condition=Available -n kourier-system
-kubectl wait deployment --all --timeout=-1s --for=condition=Available -n knative-serving
 
 kubectl patch configmap/config-network \
   --namespace knative-serving \
